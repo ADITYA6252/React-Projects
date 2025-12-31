@@ -7,7 +7,7 @@ const Header = (props) => {
     localStorage.removeItem("loggedInUser");
 props.changeuser('')
 
-    // window.location.reload();
+
   };
 
   return (

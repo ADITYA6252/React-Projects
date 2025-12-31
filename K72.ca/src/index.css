@@ -10,42 +10,27 @@
 }
 
 
-body{
-   
-    color: white;
-}
-
-
-.movex{
-    animation: moveAnimation;
-    animation-duration: 1s;
+.moveX{
+    animation-name: moveAnimation;
+    animation-duration: 10s;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-
 }
 
 .moveLink{
     opacity: 0;
-    transform: all;
-
+    transition: all ease 0.3s;
 }
 
 .link:hover .moveLink{
     opacity: 1;
-
 }
 
 @keyframes moveAnimation {
-    from {
-        transform: translateX(0px);
+    from{
+        transform: translateX(0);
     }
     to{
-        transform: translateX(-100px);
+        transform: translateX(-100%);
     }
-    
-}
-
-
-body::-webkit-scrollbar {
-  display: none;
 }
