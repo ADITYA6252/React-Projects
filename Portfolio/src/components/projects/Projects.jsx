@@ -25,7 +25,7 @@ const Projects = () => {
           title="Food Ordering Web App (React.js)"
           main="A responsive food ordering web application built using React.js and CSS, featuring dynamic meal listing, cart management, and smooth UI interactions."
           demoLink="https://silver-buttercream-9786ae.netlify.app/"
-          sourceLink="https://github.com/yourusername/dashboard-ui"
+          sourceLink="https://github.com/ADITYA6252/React-Projects/tree/main/FoodOrderApp"
         />
       </div>
     </div>
