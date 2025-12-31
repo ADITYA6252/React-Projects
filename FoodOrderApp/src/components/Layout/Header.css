@@ -1,0 +1,27 @@
+.header {
+  background-color: #7b2a10;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+}
+
+.cart-btn {
+  background-color: #44180d;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badge {
+  background-color: #ff6b00;
+  border-radius: 50%;
+  padding: 0.2rem 0.6rem;
+}

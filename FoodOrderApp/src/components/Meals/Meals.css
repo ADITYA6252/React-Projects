@@ -1,0 +1,73 @@
+.meals {
+  max-width: 60rem;
+  width: 90%;
+  margin: 2rem auto;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 14px;
+}
+
+.meal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.meal:last-child {
+  border-bottom: none;
+}
+
+.meal-info h3 {
+  margin: 0 0 0.25rem 0;
+  color: black;
+}
+
+.description {
+  font-style: italic;
+  font-weight: bold;
+  font-size: 17px;
+  color: black;
+}
+
+.price {
+  margin-top: 0.25rem;
+  font-weight: bold;
+  color: #ad5502;
+  font-size: 1.25rem;
+}
+
+.meal-actions {
+  text-align: right;
+}
+
+.amount {
+  margin-bottom: 0.5rem;
+}
+
+.amount label {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.amount input {
+  width: 3rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 0.25rem;
+}
+
+.meal-actions button {
+  font: inherit;
+  cursor: pointer;
+  background-color: #8a2b06;
+  border: 1px solid #8a2b06;
+  color: white;
+  padding: 0.5rem 2rem;
+  border-radius: 20px;
+}
+
+.meal-actions button:hover {
+  background-color: #641e03;
+}

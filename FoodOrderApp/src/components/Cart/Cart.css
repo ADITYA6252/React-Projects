@@ -1,0 +1,70 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 20;
+}
+
+.cart-modal {
+  position: fixed;
+  top: 20vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 40rem;
+  background: white;
+  padding: 2rem;
+  border-radius: 14px;
+  z-index: 30;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+}
+
+.actions {
+  text-align: right;
+  margin-top: 2rem;
+}
+
+.actions button {
+  margin-left: 1rem;
+  padding: 0.5rem 2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.close {
+  background: transparent;
+  border: 1px solid #8a2b06;
+  color: #8a2b06;
+}
+
+.order {
+  background-color: #8a2b06;
+  border: 1px solid #8a2b06;
+  color: white;
+}
+
+.success {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: #2e7d32;
+}
+
+.success h2 {
+  margin-bottom: 0.5rem;
+}
+
+.order:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}

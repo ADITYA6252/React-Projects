@@ -1,0 +1,40 @@
+.hero {
+  position: relative;
+  text-align: center;
+  padding-bottom: 3rem;
+}
+
+.hero-bg {
+  background-image: url("/images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+}
+
+
+.hero-content {
+  max-width: 700px;
+  background-color: #3b3b3b;
+  margin: -80px auto 0 auto;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+ 
+}
+
+.hero-content h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.hero-content p {
+  line-height: 1.5;
+  margin-top: 1rem;
+}
+
+.error {
+  color: red;
+  margin-top: 2rem;
+}
+
+
