@@ -42,7 +42,7 @@ const Home = () => {
         </p>
         
         <a
-          href="/Aditya_Resume.pdf"
+          href="src/assets/resume2.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="
