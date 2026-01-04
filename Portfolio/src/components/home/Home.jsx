@@ -40,7 +40,7 @@ const Home = () => {
           modern websites. I focus on clean UI, responsiveness, and performance
           to deliver the best user experience.
         </p>
-
+        
         <a
           href="/Aditya_Resume.pdf"
           target="_blank"
