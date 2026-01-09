@@ -1,4 +1,3 @@
-// ✅ LocalStorage.js
 
 export const setLocalStorage = () => {
   const employees = [
