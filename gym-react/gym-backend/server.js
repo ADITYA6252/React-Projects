@@ -10,13 +10,17 @@ import caloriesRoutes from "./routes/caloriesRoutes.js";
 import waterRoutes from "./routes/waterRoutes.js";
 import subscribeRoutes from "./routes/subscribeRoutes.js";
 
+
 dotenv.config();
 
 const app = express();
 
-app.use(cors());
 app.use(express.json());
-
+app.use(cors({
+  origin: "https://react-projects-8omk.vercel.app",
+  methods: ["GET","POST","PUT","DELETE"],
+  credentials: true
+}))
 connectDB();
 
 app.use("/api/auth", authRoutes);
