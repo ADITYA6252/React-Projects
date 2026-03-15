@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/* Smooth scrolling */
+html, body{
+  scroll-behavior: auto;
+}
+
+body{
+  margin:0;
+  padding:0;
+  background-color:#000;
+}
+
+.hero{
+  min-height:100vh;
+
+  background:
+  linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+  url("/public/images/Hero.jpg");
+
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
