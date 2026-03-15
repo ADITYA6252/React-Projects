@@ -15,7 +15,7 @@ const Calories = () => {
     try{
 
       await axios.post(
-        "http://localhost:5000/api/calories",
+        "https://gym-backend-x8if.onrender.com/api/calories",
         {
           food,
           calories

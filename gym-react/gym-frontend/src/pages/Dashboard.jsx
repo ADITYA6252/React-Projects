@@ -51,7 +51,7 @@ const Dashboard = () => {
   const user = JSON.parse(localStorage.getItem("user")) || {}
   const token = localStorage.getItem("token")
 
-  const API = "http://localhost:5000/api"
+  const API = "https://gym-backend-x8if.onrender.com/api"
 
   const [height,setHeight] = useState(user?.height || "")
   const [weight,setWeight] = useState(user?.weight || "")
