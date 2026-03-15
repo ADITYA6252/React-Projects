@@ -47,7 +47,7 @@ const Calories = () => {
     try{
 
       const res = await axios.get(
-        "http://localhost:5000/api/calories",
+        "https://gym-backend-x8if.onrender.com//api/calories",
         {
           headers:{
             Authorization:`Bearer ${token}`

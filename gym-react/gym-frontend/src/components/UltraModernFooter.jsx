@@ -24,7 +24,7 @@ const UltraModernFooter = () => {
       setLoading(true)
 
       const res = await axios.post(
-        "http://localhost:5000/api/subscribe",
+        "https://gym-backend-x8if.onrender.com//api/subscribe",
         { email }
       )
 
