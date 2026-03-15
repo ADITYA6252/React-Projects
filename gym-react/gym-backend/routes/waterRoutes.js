@@ -1,5 +1,5 @@
 import express from "express";
-import { addWater, getWater } from "../controllers/WaterController.js";
+import { addWater, getWater } from "../controllers/waterController.js";
 import protect from "../middleware/authMiddleware.js";
 
 const router = express.Router();
