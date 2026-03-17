@@ -10,6 +10,8 @@ const stats = [
 const AboutSection = () => {
 
   const [showVideo, setShowVideo] = useState(false)
+  const [activeIndex, setActiveIndex] = useState(null)
+  const [videoActive, setVideoActive] = useState(false)
 
   return (
     <section id="about" className="bg-black text-white px-6 md:px-20 py-20 md:py-28">
@@ -37,13 +39,19 @@ const AboutSection = () => {
         {stats.map((item, index) => (
           <div
             key={index}
-            className="group transition duration-300 hover:scale-105"
+            className={`transition duration-300
+            ${activeIndex === index ? "scale-105" : "hover:scale-105"}`}
+            
+            onTouchStart={() => setActiveIndex(index)}
+            onTouchEnd={() => setActiveIndex(null)}
           >
             <h3 className="text-2xl md:text-3xl font-bold text-orange-500">
               {item.number}
             </h3>
 
-            <p className="text-gray-400 text-sm mt-1 group-hover:text-white transition">
+            <p className={`text-gray-400 text-sm mt-1 transition
+              ${activeIndex === index ? "text-white" : "hover:text-white"}
+            `}>
               {item.label}
             </p>
           </div>
@@ -53,14 +61,21 @@ const AboutSection = () => {
 
 
       {/* Video Preview */}
-      <div className="mt-12 relative group cursor-pointer">
+      <div
+        className="mt-12 relative cursor-pointer"
+        onTouchStart={() => setVideoActive(true)}
+        onTouchEnd={() => setVideoActive(false)}
+      >
 
         <img
           src="/images/image9.jpg"
-          className="w-full h-[260px] md:h-[420px] object-cover rounded-xl"
+          className={`w-full h-[260px] md:h-[420px] object-cover rounded-xl transition duration-500
+          ${videoActive ? "scale-105" : "group-hover:scale-105"}`}
         />
 
-        <div className="absolute inset-0 bg-black/40 rounded-xl"></div>
+        <div className={`absolute inset-0 rounded-xl transition duration-300
+          ${videoActive ? "bg-black/30" : "bg-black/40 group-hover:bg-black/30"}
+        `}></div>
 
         {/* Play Button */}
         <div
@@ -68,8 +83,9 @@ const AboutSection = () => {
           className="absolute inset-0 flex items-center justify-center"
         >
 
-          <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-md
-          flex items-center justify-center group-hover:scale-110 transition">
+          <div className={`w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/20 backdrop-blur-md
+          flex items-center justify-center transition duration-300
+          ${videoActive ? "scale-110" : "group-hover:scale-110"}`}>
 
             <div className="w-0 h-0 border-l-[14px] border-l-orange-500
             border-t-[9px] border-t-transparent
@@ -92,7 +108,7 @@ const AboutSection = () => {
             {/* Close Button */}
             <button
               onClick={() => setShowVideo(false)}
-              className="absolute -top-10 right-0 text-white text-3xl"
+              className="absolute -top-10 right-0 text-white text-3xl active:scale-90 transition"
             >
               ✕
             </button>

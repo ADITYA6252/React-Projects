@@ -1,20 +1,46 @@
+import { useState } from "react"
+
 const Card = ({ title, img }) => {
+
+  const [active, setActive] = useState(false)
+
   return (
-    <div className="relative rounded-xl overflow-hidden group cursor-pointer hover:shadow-xl hover:shadow-orange-500/20">
+    <div
+      className={`relative rounded-xl overflow-hidden group cursor-pointer
+      transition duration-300
+      ${active ? "shadow-xl shadow-orange-500/20" : ""}`}
+      
+      onTouchStart={() => setActive(true)}
+      onTouchEnd={() => setActive(false)}
+    >
 
       {/* Image */}
       <img
         src={img}
-        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-500"
+        className={`w-full h-full object-cover transition duration-500
+        ${active 
+          ? "grayscale-0 scale-110" 
+          : "grayscale group-hover:grayscale-0 group-hover:scale-110"
+        }`}
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition"></div>
+      <div
+        className={`absolute inset-0 transition duration-300
+        ${active 
+          ? "bg-black/10" 
+          : "bg-black/30 group-hover:bg-black/10"
+        }`}
+      ></div>
 
       {/* Text */}
-      <div className="absolute bottom-4 left-4 text-orange-500 font-semibold flex items-center gap-2">
+      <div className={`absolute bottom-4 left-4 text-orange-500 font-semibold flex items-center gap-2 transition duration-300
+        ${active ? "-translate-y-1" : "group-hover:-translate-y-1"}
+      `}>
         {title}
-        <span className="text-white">↗</span>
+        <span className={`text-white transition ${active ? "translate-x-1" : "group-hover:translate-x-1"}`}>
+          ↗
+        </span>
       </div>
 
     </div>
@@ -44,22 +70,29 @@ const Services = () => {
 
         {/* Row 1 */}
         <Card title="Transform" img="/images/image1.avif" />
-
         <Card title="Elevate" img="/images/image2.avif" />
-
         <Card title="Achieve" img="/images/image3.avif" />
 
         {/* BIG CARD */}
-        <div className="sm:row-span-2 md:row-span-2 relative rounded-xl overflow-hidden group cursor-pointer">
+        <div className="sm:row-span-2 md:row-span-2 relative rounded-xl overflow-hidden group cursor-pointer
+        hover:shadow-xl hover:shadow-orange-500/20
+        active:scale-95 transition duration-300">
 
           <img
             src="/images/image5.avif"
-            className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+            className="w-full h-full object-cover 
+            group-hover:scale-105 
+            active:scale-105
+            transition duration-500"
           />
 
-          <div className="absolute inset-0 bg-black/30"></div>
+          <div className="absolute inset-0 bg-black/30 
+          group-hover:bg-black/10 
+          active:bg-black/20
+          transition duration-300"></div>
 
-          <div className="absolute bottom-6 left-6 text-white text-2xl font-bold">
+          <div className="absolute bottom-6 left-6 text-white text-2xl font-bold
+          transition duration-300 group-hover:translate-y-[-4px]">
             Unleash
           </div>
 
@@ -67,9 +100,7 @@ const Services = () => {
 
         {/* Row 2 */}
         <Card title="Perform" img="/images/image4.avif" />
-
         <Card title="Push" img="/images/image6.avif" />
-
         <Card title="Train" img="/images/image7.avif" />
 
       </div>

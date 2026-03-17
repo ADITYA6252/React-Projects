@@ -2,7 +2,8 @@ import { useState } from "react"
 
 const PricingSection = () => {
 
-  const [yearly,setYearly] = useState(false)
+  const [yearly, setYearly] = useState(false)
+  const [activeIndex, setActiveIndex] = useState(null)
 
   const plans = [
     {
@@ -72,7 +73,7 @@ const PricingSection = () => {
 
         <div
           onClick={()=>setYearly(!yearly)}
-          className="w-14 h-7 bg-gray-700 rounded-full flex items-center cursor-pointer p-1"
+          className="w-14 h-7 bg-gray-700 rounded-full flex items-center cursor-pointer p-1 active:scale-95 transition"
         >
           <div className={`w-5 h-5 bg-orange-500 rounded-full transition
           ${yearly ? "translate-x-7" : ""}`}></div>
@@ -91,18 +92,26 @@ const PricingSection = () => {
         {plans.map((plan,index)=>{
 
           const price = yearly ? plan.yearly : plan.monthly
+          const isActive = activeIndex === index
 
           return(
 
             <div
               key={index}
               className={`relative p-6 md:p-8 rounded-xl transition duration-500
-              hover:-translate-y-3 hover:shadow-2xl
+              ${
+                isActive
+                  ? "-translate-y-3 shadow-2xl"
+                  : "hover:-translate-y-3 hover:shadow-2xl"
+              }
               ${
                 plan.highlight
                 ? "bg-orange-500 text-white scale-105 shadow-xl"
                 : "bg-[#1a1a1a]"
               }`}
+              
+              onTouchStart={() => setActiveIndex(index)}
+              onTouchEnd={() => setActiveIndex(null)}
             >
 
               {/* Ribbon */}
@@ -139,7 +148,8 @@ const PricingSection = () => {
               </ul>
 
               <button
-                className={`w-full py-2 rounded-full text-sm font-semibold transition
+                className={`w-full py-2 rounded-full text-sm font-semibold transition duration-300
+                active:scale-95
                 ${
                   plan.highlight
                   ? "bg-white text-orange-500 hover:bg-gray-200"

@@ -11,6 +11,7 @@ const UltraModernFooter = () => {
 
   const [email,setEmail] = useState("")
   const [loading,setLoading] = useState(false)
+  const [activeIcon, setActiveIcon] = useState(null)
 
   const handleSubscribe = async () => {
 
@@ -20,7 +21,6 @@ const UltraModernFooter = () => {
     }
 
     try{
-
       setLoading(true)
 
       const res = await axios.post(
@@ -29,13 +29,10 @@ const UltraModernFooter = () => {
       )
 
       alert(res.data.message)
-
       setEmail("")
 
     }catch(error){
-
       alert("Subscription failed")
-
     }finally{
       setLoading(false)
     }
@@ -61,7 +58,6 @@ const UltraModernFooter = () => {
         <div className="absolute inset-0 opacity-30 bg-gradient-to-r 
         from-orange-500 via-orange-400 to-orange-600 blur-[120px]"></div>
 
-        {/* RESPONSIVE GRID */}
         <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-12">
 
           {/* LEFT */}
@@ -74,25 +70,40 @@ const UltraModernFooter = () => {
 
             <div className="flex justify-center md:justify-start gap-4">
 
-              {icons.map((Icon, i) => (
+              {icons.map((Icon, i) => {
 
-                <motion.div
-                  key={i}
-                  animate={{ y: [0, -6, 0] }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    delay: i * 0.2
-                  }}
-                  whileHover={{ scale: 1.25 }}
-                  className="w-11 h-11 flex items-center justify-center 
-                  rounded-full bg-white text-orange-500 cursor-pointer
-                  shadow-lg hover:shadow-orange-500/40 transition"
-                >
-                  <Icon />
-                </motion.div>
+                const isActive = activeIcon === i
 
-              ))}
+                return (
+                  <motion.div
+                    key={i}
+                    animate={{ y: [0, -6, 0] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: i * 0.2
+                    }}
+                    whileHover={{ scale: 1.25 }}
+                    whileTap={{ scale: 0.9 }}
+
+                    onTouchStart={() => setActiveIcon(i)}
+                    onTouchEnd={() => {
+                      // thoda delay for smooth feel
+                      setTimeout(() => setActiveIcon(null), 120)
+                    }}
+
+                    className={`w-11 h-11 flex items-center justify-center 
+                    rounded-full bg-white text-orange-500 cursor-pointer
+                    shadow-lg transition duration-300
+                    ${isActive 
+                      ? "scale-125 shadow-orange-500/40 bg-orange-50" 
+                      : "hover:shadow-orange-500/40"
+                    }`}
+                  >
+                    <Icon />
+                  </motion.div>
+                )
+              })}
 
             </div>
 
@@ -115,7 +126,8 @@ const UltraModernFooter = () => {
                 onChange={(e)=>setEmail(e.target.value)}
                 className="w-full sm:w-[260px] md:w-[300px] 
                 px-5 py-3 rounded-xl sm:rounded-l-xl sm:rounded-r-none
-                bg-white text-black outline-none focus:ring-2 focus:ring-orange-500"
+                bg-white text-black outline-none focus:ring-2 focus:ring-orange-500
+                transition duration-300"
               />
 
               <motion.button
@@ -125,7 +137,7 @@ const UltraModernFooter = () => {
                 className="mt-3 sm:mt-0 sm:px-7 py-3
                 bg-orange-500 sm:rounded-r-xl sm:rounded-l-none
                 rounded-xl flex items-center justify-center
-                hover:bg-orange-600 transition"
+                hover:bg-orange-600 transition duration-300 active:scale-95"
               >
                 {loading ? "..." : "→"}
               </motion.button>
@@ -142,46 +154,36 @@ const UltraModernFooter = () => {
               Contact Us
             </h3>
 
-            <div className="flex items-center justify-center md:justify-start gap-4">
+            {[ 
+              { icon: <FaEnvelope />, text: "Email: at7081709@gmail.com" },
+              { icon: <FaPhone />, text: "Phone: +112 456 98765" },
+              { icon: <FaLocationDot />, text: "Location: Dhaka, Bangladesh" }
+            ].map((item, i) => (
 
-              <div className="w-10 h-10 flex items-center justify-center 
-              rounded-full bg-white text-orange-500 shadow-md">
-                <FaEnvelope />
+              <div
+                key={i}
+                onTouchStart={(e)=> e.currentTarget.classList.add("translate-x-2")}
+                onTouchEnd={(e)=> {
+                  setTimeout(()=>{
+                    e.currentTarget.classList.remove("translate-x-2")
+                  },120)
+                }}
+                className="flex items-center justify-center md:justify-start gap-4 
+                transition duration-300 hover:translate-x-2 active:scale-95"
+              >
+
+                <div className="w-10 h-10 flex items-center justify-center 
+                rounded-full bg-white text-orange-500 shadow-md">
+                  {item.icon}
+                </div>
+
+                <p className="text-sm text-gray-200">
+                  {item.text}
+                </p>
+
               </div>
 
-              <p className="text-sm text-gray-200">
-                Email: at7081709@gmail.com
-              </p>
-
-            </div>
-
-
-            <div className="flex items-center justify-center md:justify-start gap-4">
-
-              <div className="w-10 h-10 flex items-center justify-center 
-              rounded-full bg-white text-orange-500 shadow-md">
-                <FaPhone />
-              </div>
-
-              <p className="text-sm text-gray-200">
-                Phone: +112 456 98765
-              </p>
-
-            </div>
-
-
-            <div className="flex items-center justify-center md:justify-start gap-4">
-
-              <div className="w-10 h-10 flex items-center justify-center 
-              rounded-full bg-white text-orange-500 shadow-md">
-                <FaLocationDot />
-              </div>
-
-              <p className="text-sm text-gray-200">
-                Location: Dhaka, Bangladesh
-              </p>
-
-            </div>
+            ))}
 
           </div>
 
