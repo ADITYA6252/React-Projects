@@ -16,7 +16,6 @@ const AboutSection = () => {
   return (
     <section id="about" className="bg-black text-white px-6 md:px-20 py-20 md:py-28">
 
-      {/* Heading */}
       <p className="text-gray-600 tracking-widest font-semibold mb-4">
         ABOUT US
       </p>
@@ -32,8 +31,6 @@ const AboutSection = () => {
         build strength, endurance and confidence.
       </p>
 
-
-      {/* Stats */}
       <div className="mt-12 bg-[#1a1a1a] rounded-lg grid grid-cols-2 md:grid-cols-4 text-center py-8 gap-6 md:gap-0">
 
         {stats.map((item, index) => (
@@ -60,7 +57,7 @@ const AboutSection = () => {
       </div>
 
 
-      {/* Video Preview */}
+  
       <div
         className="mt-12 relative cursor-pointer"
         onTouchStart={() => setVideoActive(true)}
@@ -76,8 +73,6 @@ const AboutSection = () => {
         <div className={`absolute inset-0 rounded-xl transition duration-300
           ${videoActive ? "bg-black/30" : "bg-black/40 group-hover:bg-black/30"}
         `}></div>
-
-        {/* Play Button */}
         <div
           onClick={() => setShowVideo(true)}
           className="absolute inset-0 flex items-center justify-center"
@@ -98,7 +93,6 @@ const AboutSection = () => {
       </div>
 
 
-      {/* VIDEO MODAL */}
       {showVideo && (
 
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 px-4">

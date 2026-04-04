@@ -21,7 +21,6 @@ const Hero = () => {
           training programs.
         </p>
 
-        {/* BUTTON */}
         <div className="flex items-center justify-center md:justify-start gap-6 mt-8">
 
           <button
@@ -36,7 +35,6 @@ const Hero = () => {
 
         </div>
 
-        {/* MEMBERS */}
         <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mt-10">
 
           <div className="flex -space-x-3">
@@ -61,7 +59,6 @@ const Hero = () => {
       </div>
 
 
-      {/* POPUP */}
       {openAuth && (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 px-4">
 
@@ -101,8 +98,7 @@ const Hero = () => {
 
         </div>
       )}
-
-      {/* SCROLL TEXT */}
+      
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white text-sm md:text-base">
         ↓ Scroll
       </div>
